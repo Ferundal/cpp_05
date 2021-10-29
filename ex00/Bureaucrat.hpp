@@ -10,10 +10,9 @@ class Bureaucrat {
 protected:
 	const std::string	name;
 	int					grade;
-	Bureaucrat( const std::string new_name );
 public:
 	Bureaucrat( void );
-	Bureaucrat( const std::string new_name, int new_grade);
+	Bureaucrat( const std::string &new_name, int new_grade);
 	Bureaucrat( const Bureaucrat& origin);
 	Bureaucrat& operator =(const Bureaucrat& origin);
 

@@ -4,7 +4,7 @@ Bureaucrat::Bureaucrat( void ) {
 
 }
 
-Bureaucrat::Bureaucrat( const std::string new_name, int new_grade) : name(new_name) {
+Bureaucrat::Bureaucrat( const std::string &new_name, int new_grade) : name(new_name) {
 	if (new_grade > GRADE_MAX_INT_VAL) {
 		throw GradeTooLowException();
 	}

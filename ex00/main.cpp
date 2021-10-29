@@ -45,7 +45,7 @@ int main() {
 	}
 	try
 	{
-		Bureaucrat not_ok_bur ("Not_ok_Bur", -7);
+		Bureaucrat not_ok_bur ("Not_ok_Bur", 155);
 	}
 	catch (std::exception & e)
 	{

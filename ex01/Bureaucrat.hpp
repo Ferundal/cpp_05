@@ -3,17 +3,19 @@
 
 # include <string>
 # include <iostream>
+# include "Form.hpp"
 # define GRADE_MIN_INT_VAL 1
 # define GRADE_MAX_INT_VAL 150
+
+class Form;
 
 class Bureaucrat {
 protected:
 	const std::string	name;
 	int					grade;
-	Bureaucrat( const std::string new_name );
 public:
 	Bureaucrat( void );
-	Bureaucrat( const std::string new_name, int new_grade);
+	Bureaucrat( const std::string &new_name, int new_grade);
 	Bureaucrat( const Bureaucrat& origin);
 	Bureaucrat& operator =(const Bureaucrat& origin);
 
@@ -21,8 +23,10 @@ public:
 
 	Bureaucrat operator ++(int);
 	Bureaucrat operator --(int);
-	std::string getName( void ) const;
-	int getGrade ( void ) const;
+
+	std::string	getName( void ) const;
+	int			getGrade ( void ) const;
+	void		signForm (Form &_form);
 
 	class GradeTooHighException : public std::exception {
 		const char * what() const throw();

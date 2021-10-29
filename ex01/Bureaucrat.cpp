@@ -4,7 +4,7 @@ Bureaucrat::Bureaucrat( void ) {
 
 }
 
-Bureaucrat::Bureaucrat( const std::string new_name, int new_grade) : name(new_name) {
+Bureaucrat::Bureaucrat( const std::string &new_name, int new_grade) : name(new_name) {
 	if (new_grade > GRADE_MAX_INT_VAL) {
 		throw GradeTooLowException();
 	}
@@ -48,12 +48,28 @@ int Bureaucrat::getGrade ( void ) const {
 	return grade;
 }
 
+void	Bureaucrat::signForm (Form &form) {
+	if (form.isSigned()) {
+		std::cout << name << "can't signs " << form.getName() << " becouse form is already signed!" << std::endl;
+		return;
+	}
+	try {
+		form.beSigned(*this);
+	}
+	catch (std::exception & e)
+	{
+		std::cout << name << " can't signs " << form.getName() << " becouse his grade " << grade << ", needed " << form.getGrade() << std::endl;
+		return;
+	}
+	std::cout << name << " signs " << form.getName() << std::endl;
+}
+
 const char * Bureaucrat::GradeTooHighException::what() const throw() {
-	return ("Grade too high!");
+	return ("Bureaucrat grade too high!");
 }
 
 const char * Bureaucrat::GradeTooLowException::what() const throw() {
-	return ("Grade too low!");
+	return ("Bureaucrat grade too low!");
 }
 
 std::ostream &operator <<(std::ostream &outstream, const Bureaucrat &origin) {

@@ -41,6 +41,7 @@ INC_HEADERS_FORMAT=	-I ${dir ${HEADERS}}
 INC_HEADERS_DIR=	${foreach HEADERS, ${HEADERS}, ${INC_HEADERS_FORMAT}}
 
 SRCS_CLASSES=		Bureaucrat.cpp \
+					Form.cpp \
 
 SRCS_CPP=			${SRCS_CLASSES} \
 					main.cpp \
@@ -53,7 +54,7 @@ endif
 
 OBJS_CPP=			${SRCS_CPP:.cpp=.o}
 
-NAME=				Bureaucrat
+NAME=				Form
 
 CC=					clang++
 RM=					rm -f
