@@ -45,6 +45,7 @@ SRCS_CLASSES=		Bureaucrat.cpp \
 					ShrubberyCreationForm.cpp \
 					RobotomyRequestForm.cpp \
 					PresidentialPardonForm.cpp \
+					Intern.cpp
 
 SRCS_CPP=			${SRCS_CLASSES} \
 					main.cpp \
@@ -57,7 +58,7 @@ endif
 
 OBJS_CPP=			${SRCS_CPP:.cpp=.o}
 
-NAME=				realforms
+NAME=				intern
 
 CC=					clang++
 RM=					rm -f

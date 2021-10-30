@@ -1,18 +1,27 @@
 #include "Form.hpp"
 
-Form::Form( void ) : grade(-1), is_signed(false) {
+Form::Form( void ) : sign(-1),
+					exec(-1),
+					is_signed(false) {
 
 }
 
-Form::Form( const std::string &new_name, int new_grade) : name(new_name), grade(new_grade), is_signed(false) {
-	if (grade > FORM_GRADE_MAX_INT_VAL) {
+Form::Form( const std::string &new_name, int new_sign, int new_exec) :
+															name(new_name),
+															sign(new_sign),
+															exec(new_exec),
+															is_signed(false) {
+	if (sign > FORM_GRADE_MAX_INT_VAL || exec > FORM_GRADE_MAX_INT_VAL) {
 		throw GradeTooLowException();
 	}
-	if (grade < FORM_GRADE_MIN_INT_VAL) {
+	if (sign < FORM_GRADE_MIN_INT_VAL || exec < FORM_GRADE_MIN_INT_VAL) {
 		throw GradeTooHighException();
 	}
 }
-Form::Form( const Form& origin) : name (origin.name), grade(origin.grade), is_signed(origin.is_signed) {
+Form::Form( const Form& origin) : name (origin.name),
+									sign(origin.sign),
+									exec(origin.exec),
+									is_signed(origin.is_signed) {
 
 }
 
@@ -28,15 +37,18 @@ Form::~Form( void ) {
 std::string	Form::getName( void ) const {
 	return name;
 }
-int			Form::getGrade ( void ) const {
-	return grade;
+int			Form::getSignG (void ) const {
+	return sign;
+}
+int			Form::getExecG (void ) const {
+	return exec;
 }
 bool		Form::isSigned ( void ) const {
 	return is_signed;
 }
 
 void		Form::beSigned (Bureaucrat &rater) {
-	if (grade < rater.getGrade()) {
+	if (sign < rater.getGrade()) {
 		throw GradeTooHighException();
 	}
 	is_signed = true;
@@ -51,6 +63,6 @@ const char * Form::GradeTooLowException::what() const throw() {
 }
 
 std::ostream &operator <<(std::ostream &outstream, const Form &origin) {
-	outstream << origin.getName() << ", bureaucrat grade " << origin.getGrade() << "!";
+	outstream << origin.getName() << " form needs " << origin.getSignG() << " to sign and " << origin.getExecG() << " to execute!";
 	return (outstream);
 }

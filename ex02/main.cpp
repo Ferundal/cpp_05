@@ -1,11 +1,24 @@
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
-#define ANIMAL_ARRAY_SIZE 2
+#include "ShrubberyCreationForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
 
 int main() {
+	{
+		ShrubberyCreationForm ok_sh_form ("home");
+		std::cout << ok_sh_form <<std::endl;
+		PresidentialPardonForm ok_pres_form ("home");
+		std::cout << ok_pres_form <<std::endl;
+		RobotomyRequestForm ok_rob_form("home");
+		std::cout << ok_rob_form <<std::endl;
+	}
 	try
 	{
-		Form not_ok_form ("not_ok_form", -7);
+		ShrubberyCreationForm ok_form ("home");
+		Bureaucrat rater("Bob", 140);
+		Bureaucrat executer("Bill", 130);
+		rater.signForm(ok_form);
+		ok_form.execute(executer);
 	}
 	catch (std::exception & e)
 	{
@@ -13,101 +26,120 @@ int main() {
 	}
 	try
 	{
-		Form not_ok_form ("not_ok_form", 155);
+		PresidentialPardonForm ok_pres_form ("home");
+		Bureaucrat rater("Bob", 24);
+		Bureaucrat executer("Bill", 4);
+		rater.signForm(ok_pres_form);
+		ok_pres_form.execute(executer);
 	}
 	catch (std::exception & e)
 	{
 		std::cout << e.what() << std::endl;
 	}
-	std::cout << "----------ok_high_bur------------------------" <<std::endl;
 	try
 	{
-		Form		ok_form ("ok_form", 70);
-		Bureaucrat	ok_high_bur ("ok_high_bur", 13);
-		ok_form.beSigned(ok_high_bur);
-		std::cout << "Signed from beSigned" <<std::endl;
+		RobotomyRequestForm ok_rob_form("home");
+		Bureaucrat rater("Bob", 71);
+		Bureaucrat executer("Bill", 44);
+		rater.signForm(ok_rob_form);
+		ok_rob_form.execute(executer);
 	}
 	catch (std::exception & e)
 	{
 		std::cout << e.what() << std::endl;
 	}
-	std::cout << "-------------ok_low_bur--------------------" <<std::endl;
+	std::cout << "------------------------------------------"  <<std::endl;
+	try
+ 	{
+		ShrubberyCreationForm ok_form ("home");
+		Bureaucrat rater("Bob", 140);
+		Bureaucrat executer("Bill", 140);
+		rater.signForm(ok_form);
+		ok_form.execute(executer);
+	}
+	catch (std::exception & e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	std::cout << "------------------------------------------"  <<std::endl;
 	try
 	{
-		Form		ok_form ("ok_form", 70);
-		Bureaucrat	ok_low_bur ("ok_low_bur", 130);
-		ok_form.beSigned(ok_low_bur);
-		std::cout << "Signed from beSigned" <<std::endl;
+		ShrubberyCreationForm ok_form ("home");
+		Bureaucrat rater("Bob", 149);
+		Bureaucrat executer("Bill", 130);
+		rater.signForm(ok_form);
+		ok_form.execute(executer);
 	}
 	catch (std::exception & e)
 	{
 		std::cout << e.what() << std::endl;
 	}
-	std::cout << "-------------ok_equal_bur------------------" <<std::endl;
+	std::cout << "------------------------------------------"  <<std::endl;
 	try
 	{
-		Form		ok_form ("ok_form", 70);
-		Bureaucrat	ok_equal_bur ("ok_equal_bur", 70);
-		ok_form.beSigned(ok_equal_bur);
-		std::cout << "Signed from beSigned" <<std::endl;
+		PresidentialPardonForm ok_pres_form ("home");
+		Bureaucrat rater("Bob", 24);
+		Bureaucrat executer("Bill", 7);
+		rater.signForm(ok_pres_form);
+		ok_pres_form.execute(executer);
 	}
 	catch (std::exception & e)
 	{
 		std::cout << e.what() << std::endl;
 	}
-	std::cout << "-------------------------------------------" <<std::endl;
+	std::cout << "------------------------------------------"  <<std::endl;
 	try
 	{
-		Form		ok_form ("ok_form", 70);
-		Bureaucrat	ok_high_bur ("ok_high_bur", 13);
-		ok_high_bur.signForm(ok_form);
+		PresidentialPardonForm ok_pres_form ("home");
+		Bureaucrat rater("Bob", 30);
+		Bureaucrat executer("Bill", 1);
+		rater.signForm(ok_pres_form);
+		ok_pres_form.execute(executer);
 	}
 	catch (std::exception & e)
 	{
 		std::cout << e.what() << std::endl;
 	}
-	std::cout << "-------------------------------------------" <<std::endl;
+	std::cout << "------------------------------------------"  <<std::endl;
 	try
 	{
-		Form		ok_form ("ok_form", 70);
-		Bureaucrat	ok_low_bur ("ok_low_bur", 130);
-		ok_low_bur.signForm(ok_form);
+		RobotomyRequestForm ok_rob_form("home");
+		Bureaucrat rater("Bob", 71);
+		Bureaucrat executer("Bill", 100);
+		rater.signForm(ok_rob_form);
+		ok_rob_form.execute(executer);
 	}
 	catch (std::exception & e)
 	{
 		std::cout << e.what() << std::endl;
 	}
-	std::cout << "-------------------------------------------" <<std::endl;
+	std::cout << "------------------------------------------"  <<std::endl;
 	try
 	{
-		Form		ok_form ("ok_form", 70);
-		Bureaucrat	ok_equal_bur ("ok_equal_bur", 70);
-		ok_equal_bur.signForm(ok_form);
+		RobotomyRequestForm ok_rob_form("home");
+		Bureaucrat rater("Bob", 75);
+		Bureaucrat executer("Bill", 40);
+		rater.signForm(ok_rob_form);
+		ok_rob_form.execute(executer);
 	}
 	catch (std::exception & e)
 	{
 		std::cout << e.what() << std::endl;
 	}
-	std::cout << "-------------------------------------------" <<std::endl;
+	std::cout << "+++++++++++++++++++++++"  <<std::endl;
 	try
 	{
-		Form		ok_form ("ok_form", 70);
-		Bureaucrat	ok_first_bur ("ok_equal_bur", 70);
-		Bureaucrat	ok_second_bur ("ok_equal_bur", 70);
-		ok_first_bur.signForm(ok_form);
-		ok_second_bur.signForm(ok_form);
+		RobotomyRequestForm ok_rob_form("home");
+		Bureaucrat god("God", 1);
+		Bureaucrat trash("Trash", 150);
+		god.signForm(ok_rob_form);
+		god.executeForm(ok_rob_form);
+		trash.executeForm(ok_rob_form);
 	}
 	catch (std::exception & e)
 	{
-		std::cout << e.what() << std::endl;
+		std::cout << "Shoud not see that message!" << std::endl;
 	}
-	std::cout << "-------------------------------------------" <<std::endl;
-	try
-	{
-		Bureaucrat	not_ok_bur ("ok_equal_bur", 167);
-	}
-	catch (std::exception & e)
-	{
-		std::cout << e.what() << std::endl;
-	}
+
+
 }

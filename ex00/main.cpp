@@ -1,5 +1,4 @@
 #include "Bureaucrat.hpp"
-#define ANIMAL_ARRAY_SIZE 2
 
 int main() {
 	try
